@@ -19,6 +19,7 @@ public class HomePageService {
 
         try {
             result.put("lstPromotionProduct", productRepository.getLstPromotionProduct());
+            result.put("lstNewProduct", productRepository.getNewProduct());
         }catch (Exception e){
             result.put("err","err");
         }

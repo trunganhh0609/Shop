@@ -10,4 +10,6 @@ import java.util.Map;
 @Mapper
 public interface ProductRepository {
     List<Map<Object,Object>> getLstPromotionProduct();
+
+    List<Map<Object,Object>> getNewProduct();
 }

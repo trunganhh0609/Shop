@@ -20,5 +20,21 @@
         LIMIT 8
     </select>
 
+    <select id="getNewProduct" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        product.DESCRIPTION,
+        promotion.PROMOTION_NAME,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM product
+        LEFT JOIN promotion
+        ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        order BY product.PRODUCT_ID DESC LIMIT 8
+    </select>
+
 
 </mapper>

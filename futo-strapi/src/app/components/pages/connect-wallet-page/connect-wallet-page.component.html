@@ -5,14 +5,16 @@
         <div class="row">
             <div class="col-sm-3" *ngFor="let item of lstPromotionProduct">
                 <div class="wallet-card">
-                    <div class="badge">{{ item.PROMOTION_NAME }}-{{ item.VALUE }}%</div>
+                    <div class="badge" *ngIf="item.VALUE">{{ item.PROMOTION_NAME }}-{{ item.VALUE }}%</div>
                     <img src="https://product.hstatic.net/1000246282/product/1_bea109509dd7499883834e5d7faa2c81.png" alt="wallet">
                     <h3>
                         <a routerLink="/login">
                             {{ item.PRODUCT_NAME }}
                         </a>
                     </h3>
-                    <h5 class="text-danger text-end">{{ item.PRICE }}</h5>
+                    <h5 class="text-danger text-end" *ngIf="!item.VALUE">{{ item.PRICE }}</h5>
+                    <h5 class="text-danger text-end" *ngIf="item.VALUE">{{ item.PRICE * (100 - item.VALUE) / 100 }}</h5>
+                    <h5 class="text-secondary text-end" style="text-decoration: line-through;" *ngIf="item.VALUE">{{ item.PRICE }}</h5>
                     <p style="height:60px; overflow: hidden">
                         {{ item.DESCRIPTION }}
                     </p>
