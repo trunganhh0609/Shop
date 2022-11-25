@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.qlrl.repository.UserRepos">
+
+    <select resultType="com.project.qlrl.models.User" parameterType="map" id="getUserByUserName">
+        SELECT * FROM user WHERE USER_NAME = #{userName}
+    </select>
+
+    <select resultType="map" id="getAllUser">
+        SELECT * FROM user
+    </select>
+
+    <select resultType="map" id="getUserRole" parameterType="Map">
+        SELECT ROLE_ID AS ROLE FROM user WHERE USER_NAME = #{userName}
+    </select>
+
+    <select resultType="map" id="getUserInfo" parameterType="Map">
+        SELECT
+        user.USER_ID,
+        user.NAME,
+        user.BIRTH_DATE,
+        user.ROLE_ID AS ROLE,
+        class.CLASS_NAME,
+        course.COURSE_NAME,
+        department.DEPT_ID,
+        department.DEPT_NAME
+        FROM user
+        INNER JOIN department ON user.DEPT_ID = department.DEPT_ID
+        LEFT JOIN user_class ON user.USER_ID = user_class.USER_ID
+        LEFT JOIN class ON user_class.CLASS_ID = class.CLASS_ID
+        LEFT JOIN course ON course.COURSE_ID = class.COURSE_ID
+        WHERE USER_NAME = #{userName}
+    </select>
+
+
+</mapper>

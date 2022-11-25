@@ -1,0 +1,79 @@
+<!-- Page Banner -->
+<div class="inner-banner inner-bg7">
+    <div class="container">
+        <div class="inner-title">
+            <h1>Explore Our Digital Assets</h1>
+            <ul>
+                <li>
+                    <a routerLink="/">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    Explore
+                </li>
+            </ul>
+            <div class="inner-shape">
+                <img src="assets/images/inner-banner/inner-shape1.png" alt="shape">
+                <img src="assets/images/inner-banner/inner-shape2.png" alt="shape">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NFTs -->
+<div class="nfts-area bg-f6f6f6 pt-100 pb-70">
+    <div class="container" *ngIf="nftItemsData">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let content of nftItemsData | paginate: { itemsPerPage: 12, currentPage }">
+                <div class="featured-card">
+                    <div class="image">
+                        <a
+                            [routerLink]="['/nft-item', content.attributes.slug]"
+                            class="d-block"
+                        >
+                            <img [src]="content.attributes.nftImage.data.attributes.url" alt="nft-image">
+                        </a>
+                        <span class="fav"><i class="ri-heart-line"></i> 122</span>
+                        <button type="button" class="default-btn border-radius-5">Place Bid</button>
+                        <!-- convert your date to timestamps https://www.epochconverter.com/ -->
+                        <div class="countdown" *ngIf="content.attributes.timer" simpleCountdown [dateTo]="content.attributes.timer"></div>
+                    </div>
+                    <div class="content">
+                        <h3>
+                            <a [routerLink]="['/nft-item', content.attributes.slug]">
+                                {{content.attributes.title}}
+                            </a>
+                        </h3>
+                        <div class="content-in">
+                            <div class="featured-card-left">
+                                <span>100 ETH 12/14</span>
+                                <h4>Bid {{content.attributes.price}} ETH </h4>
+                            </div>
+                            <a
+                                [routerLink]="['/nft-item', content.attributes.slug]"
+                                class="featured-content-btn"
+                            >
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
+                        </div>
+                        <a
+                            [routerLink]="['/author', content.attributes.author.data.attributes.slug]"
+                            class="featured-user-option"
+                        >
+                            <img [src]="content.attributes.authorImage.data.attributes.url" alt="author-image">
+                            <span>Created by @{{content.attributes.author.data.attributes.username}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12" *ngIf="nftItemsData?.length > 12">
+                <div class="pagination-area mb-30">
+                    <pagination-controls previousLabel="" nextLabel="" (pageChange)="onPageChange($event)"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-get-involved></app-get-involved>

@@ -1,0 +1,163 @@
+<!-- Page Banner -->
+<div class="inner-banner inner-bg2">
+    <div class="container">
+        <div class="inner-title text-center">
+            <h1>Create NFTs</h1>
+            <ul>
+                <li>
+                    <a routerLink="/">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    Create
+                </li>
+            </ul>
+            <div class="inner-shape">
+                <img src="assets/images/inner-banner/inner-shape1.png" alt="shape">
+                <img src="assets/images/inner-banner/inner-shape2.png" alt="shape">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create -->
+<div class="create-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-12">
+                <div class="author-profile-sidebar">
+                    <div class="author-user">
+                        <img src="assets/images/author/author6.jpg" alt="author">
+                        <i class="ri-check-line"></i>
+                    </div>
+                    <h3>
+                        Olivia Jenar
+                    </h3>
+                    <span>@Jenar</span>
+                    <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary</p>
+                    <div class="sp-title">0x76669f...a0e9ca52 <i class="ri-folders-line"></i></div>
+                    <div class="author-content">
+                        <div class="content-left">
+                            <span>Followers</span>
+                            <h3>2941</h3>
+                        </div>
+                        <div class="content-right">
+                            <button type="submit">Follow</button>
+                        </div>
+                    </div>
+                    <ul class="social-link">
+                        <li>
+                            <a href="https://www.facebook.com/" target="_blank" class="facebook">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank" class="twitter">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/" target="_blank" class="linkedin">
+                                <i class="ri-linkedin-fill"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" target="_blank" class="instagram">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-12">
+                <div class="create-form">
+                    <div class="section-title">
+                        <h2>Create Item</h2>
+                    </div>
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Upload File</label>
+                                    <div class="profileButton">
+                                        <input class="profileButton-input" type="file"  name="attachments[]" accept="image/*, application/pdf" id="upload" multiple/>
+                                        <label class="profileButton-button ripple-effect" for="upload">e. g. Image, Audio, Video</label>
+                                        <span class="profileButton-file-name"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Item Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="e. g. “walking in the air”">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="e. g. “after purchasing you’ll able to get the real product”"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label>Royalties</label>
+                                    <input type="text"  class="form-control" placeholder="e. g. “5%”">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label>Size</label>
+                                    <input type="text"  class="form-control" placeholder="e. g. “size”">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="form-group">
+                                    <label>Property</label>
+                                    <input type="text"  class="form-control" placeholder="e. g. subject">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <input type="text"  class="form-control" placeholder="e. g. “NFTs”">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label>Number Of Copies</label>
+                                    <input type="text"  class="form-control" placeholder="e. g. “1”">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="checkbox-method-area">
+                                    <div class="checkbox-method">
+                                        <p>
+                                            <input type="radio" id="fixed-price" name="radio-group">
+                                            <label for="fixed-price">Fixed Price</label>
+                                        </p>
+                                    </div>
+                                    <div class="checkbox-method">
+                                        <p>
+                                            <input type="radio" id="timed-auction" name="radio-group">
+                                            <label for="timed-auction">Timed Auction</label>
+                                        </p>
+                                    </div>
+                                    <div class="checkbox-method">
+                                        <p>
+                                            <input type="radio" id="open-bid" name="radio-group">
+                                            <label for="open-bid">Open For Bid</label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn border-radius-5">Create Item</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+.blog-details-content {
+    .image {
+        margin-bottom: 15px;
+        position: relative;
+        padding-top: 20px;
+
+        img {
+            border-radius: 10px;
+        }
+        .tag-btn {
+            top: 0;
+            left: 30px;
+            font-size: 14px;
+            padding: 7px 20px;
+            position: absolute;
+            border-radius: 30px;
+            display: inline-block;
+            color: var(--whiteColor);
+            background-color: var(--mainColor);
+
+            &:hover {
+                background-color: var(--bodyColor);
+            }
+        }
+        .date {
+            display: block;
+            margin-top: 20px;
+            color: var(--mainColor);
+        }
+    }
+}
+.comments-form {
+    padding: 40px;
+    margin-top: 25px;
+    border-radius: 15px;
+    background-color: var(--whiteColor);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+    
+    h3 {
+        margin-bottom: 30px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+
+        label {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .form-control {
+            width: 100%;
+            height: 50px;
+            border: none;
+            box-shadow: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: var(--bodyColor);
+            background-color: #F8F8F8;
+        }
+        textarea.form-control {
+            height: auto;
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .blog-details-content {
+        .image {
+            padding-top: 15px;
+
+            .tag-btn {
+                left: 15px;
+                font-size: 13px;
+            }
+        }
+    }
+    .comments-form {
+        padding: 25px 20px;
+        
+        h3 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+    
+            label {
+                margin-bottom: 12px;
+            }
+            .form-control {
+                padding-left: 15px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    
+    .comments-form {
+        padding: 30px;
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

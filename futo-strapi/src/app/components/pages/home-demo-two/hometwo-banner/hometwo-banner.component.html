@@ -1,0 +1,72 @@
+<div class="banner-area-two">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="banner-content-two">
+                    <h1>Collect NFTs From Our Creative & Rare Digital Artwork</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam etiam rhoncus aenean a iaculis aliquet.</p>
+                    <div class="banner-btn">
+                        <a routerLink="/explore-1" class="default-btn border-radius-5">Explore More</a>
+                        <a routerLink="/connect-wallet" class="default-btn border-radius-5">Connect Wallet</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="banner-item-slider" *ngIf="nftItemsData">
+                    <owl-carousel-o [options]="bannerItemSlides">
+                        <ng-template carouselSlide *ngFor="let content of nftItemsData.slice(0, 3)">
+                            <div class="banner-item">
+                                <div class="image">
+                                    <a
+                                        [routerLink]="['/nft-item', content.attributes.slug]"
+                                        class="d-block"
+                                    >
+                                        <img [src]="content.attributes.nftImage.data.attributes.url" alt="nft-image">
+                                    </a>
+                                    <div class="banner-item-user">
+                                        <a
+                                            [routerLink]="['/author', content.attributes.author.data.attributes.slug]"
+                                            class="banner-item-user-option"
+                                        >
+                                            <img [src]="content.attributes.authorImage.data.attributes.url" alt="author-image">
+                                            <span>Created by @{{content.attributes.author.data.attributes.username}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="timer" *ngIf="content.attributes.timer">
+                                        <!-- convert your date to timestamps https://www.epochconverter.com/ -->
+                                        <div class="countdown" simpleCountdown [dateTo]="content.attributes.timer"></div>
+                                    </div>
+                                    <button type="submit" class="default-btn">Place Bid</button>
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h3>
+                                            <a [routerLink]="['/nft-item', content.attributes.slug]">
+                                                {{content.attributes.title}}
+                                            </a>
+                                        </h3>
+                                        <span class="fav">
+                                            <i class="ri-heart-line"></i> 142
+                                        </span>
+                                    </div>
+                                    <div class="item-left">
+                                        <span>Start Bid</span>
+                                        <h4 class="item-left-eth">{{content.attributes.price}} ETH</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner-shape">
+        <div class="shape-in1">
+            <img src="assets/images/shape/home-two-shape1.png" alt="shape">
+        </div>
+        <div class="shape-in2">
+            <img src="assets/images/shape/home-two-shape2.png" alt="shape">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="blog-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <h2>From Our Blog</h2>
+            <a routerLink="/blog" class="default-btn border-radius-5">Explore More</a>
+        </div>
+        <div class="row justify-content-center" *ngIf="blogPostsData">
+            <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let content of blogPostsData.slice(0, 3)">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <a
+                            [routerLink]="['/blog', content.attributes.slug]"
+                            class="d-block"
+                        >
+                            <img [src]="content.attributes.image.data.attributes.url" alt="blog-image">
+                        </a>
+                        <a
+                            [routerLink]="['/blog-category', content.attributes.category.data.attributes.slug]"
+                            class="blog-tag-btn"
+                        >
+                            {{content.attributes.category.data.attributes.title}}
+                        </a>
+                    </div>
+                    <div class="content">
+                        <h3>
+                            <a [routerLink]="['/blog', content.attributes.slug]">
+                                {{content.attributes.title}}
+                            </a>
+                        </h3>
+                        <span class="date">{{content.attributes.createdAt | date}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

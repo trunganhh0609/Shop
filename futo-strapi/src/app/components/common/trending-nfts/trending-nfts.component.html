@@ -1,0 +1,105 @@
+<div
+    class="trending-area pt-100 pb-70"
+    [ngClass]="{'d-none': router?.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <h2>Trending Artwork</h2>
+            <a routerLink="/explore-1" class="default-btn border-radius-5">Explore More</a>
+        </div>
+        <div class="row justify-content-center" *ngIf="nftItemsData">
+            <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let content of nftItemsData.slice(0, 4)">
+                <div class="trending-item">
+                    <div class="image">
+                        <a
+                            [routerLink]="['/nft-item', content.attributes.slug]"
+                            class="d-block"
+                        >
+                            <img [src]="content.attributes.nftImage.data.attributes.url" alt="nft-image">
+                        </a>
+                        <div class="trending-user">
+                            <a
+                                [routerLink]="['/author', content.attributes.author.data.attributes.slug]"
+                                class="author"
+                            >
+                                <img [src]="content.attributes.authorImage.data.attributes.url" alt="author-image">
+                                <span>Created by @{{content.attributes.author.data.attributes.username}}</span>
+                            </a>
+                        </div>
+                        <button type="button" class="default-btn border-radius-5">Place Bid</button>
+                        <div class="timer" *ngIf="content.attributes.timer">
+                            <!-- convert your date to timestamps https://www.epochconverter.com/ -->
+                            <div class="countdown" simpleCountdown [dateTo]="content.attributes.timer"></div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h3>
+                            <a [routerLink]="['/nft-item', content.attributes.slug]">
+                                {{content.attributes.title}}
+                            </a>
+                        </h3>
+                        <span class="fav"><i class="ri-heart-line"></i> 340</span>
+                        <div class="trending-title">
+                            <span>100 ETH 12/14</span>
+                            <span>Bid {{content.attributes.price}} ETH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- For Home Demo - 3 -->
+<div
+    class="trending-area bg-f9f9f9 pt-100 pb-70 d-none"
+    [ngClass]="{'d-block': router?.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="section-title">
+            <h2>Trending Artwork</h2>
+            <a routerLink="/explore-1" class="default-btn border-radius-5">Explore More</a>
+        </div>
+        <div class="trending-slider" *ngIf="nftItemsData">
+            <owl-carousel-o [options]="trendingSlides">
+                <ng-template carouselSlide *ngFor="let content of nftItemsData.slice(0, 10)">
+                    <div class="trending-card">
+                        <div class="image">
+                            <a
+                                [routerLink]="['/nft-item', content.attributes.slug]"
+                                class="d-block"
+                            >
+                                <img [src]="content.attributes.nftImage.data.attributes.url" alt="nft-image">
+                            </a>
+                            <span class="fav"><i class="ri-heart-line"></i> 105</span>
+                            <button type="button" class="default-btn border-radius-5">Place Bid</button>
+                            <div class="timer" *ngIf="content.attributes.timer">
+                                <!-- convert your date to timestamps https://www.epochconverter.com/ -->
+                                <div class="countdown" simpleCountdown [dateTo]="content.attributes.timer"></div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h3>
+                                <a [routerLink]="['/nft-item', content.attributes.slug]">
+                                    {{content.attributes.title}}
+                                </a>
+                            </h3>
+                            <a
+                                [routerLink]="['/author', content.attributes.author.data.attributes.slug]"
+                                class="trending-user-option"
+                            >
+                                <img [src]="content.attributes.authorImage.data.attributes.url" alt="author-image">
+                                <i class="ri-check-line"></i>
+                                <span>Created by @{{content.attributes.author.data.attributes.username}}</span>
+                            </a>
+                            <div class="trending-title">
+                                <span>100 ETH 12/14</span>
+                                <h4>Bid {{content.attributes.price}} ETH</h4>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

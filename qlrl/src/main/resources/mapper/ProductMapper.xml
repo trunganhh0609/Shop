@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.qlrl.repository.ProductRepository">
+
+    <select id="getLstPromotionProduct" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        product.DESCRIPTION,
+        promotion.PROMOTION_NAME,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM product
+        INNER JOIN promotion ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        WHERE NOW() >= promotion.START_DATE
+        AND promotion.END_DATE >= NOW()
+        LIMIT 8
+    </select>
+
+
+</mapper>
