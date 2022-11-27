@@ -27,9 +27,12 @@ import { LiveAuctionPageComponent } from './components/pages/live-auction-page/l
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { NftsCategoryPageComponent } from './components/pages/nfts-category-page/nfts-category-page.component';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
+import { PaymentComponent } from './components/pages/payment/payment.component';
 import { PrivacyPolicyPageComponent } from './components/pages/privacy-policy-page/privacy-policy-page.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { ShoppingCartComponent } from './components/pages/shopping-cart/shopping-cart.component';
 import { TermsConditionsPageComponent } from './components/pages/terms-conditions-page/terms-conditions-page.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 const routes: Routes = [
     {path: '', component: HomeDemoThreeComponent},
@@ -42,7 +45,7 @@ const routes: Routes = [
     {path: 'explore-5', component: ExplorePageFiveComponent},
     {path: 'explore-6', component: ExplorePageSixComponent},
     {path: 'explore-7', component: ExplorePageSevenComponent},
-    {path: 'nft-item/:slug', component: ItemDetailsPageComponent},
+    {path: 'product-detail', component: ItemDetailsPageComponent},
     {path: 'category/:slug', component: NftsCategoryPageComponent},
     {path: 'collection', component: CollectionPageComponent},
     {path: 'live-auctions', component: LiveAuctionPageComponent},
@@ -61,6 +64,9 @@ const routes: Routes = [
     {path: 'privacy-policy', component: PrivacyPolicyPageComponent},
     {path: 'faq', component: FaqPageComponent},
     {path: 'contact', component: ContactPageComponent},
+    {path: 'shopping-cart', component: ShoppingCartComponent},
+    {path: 'payment', component: PaymentComponent},
+    {path: 'product-category', component: ProductCategoryComponent},
     // Here add new pages component
 
     {path: '**', component: NotFoundPageComponent} // This line will remain down from the whole pages component list

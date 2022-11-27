@@ -1,0 +1,23 @@
+.delete:hover{
+    color: rgb(246, 103, 103);
+}
+.product-name{
+    font-size: 1.3rem;
+    color: black;
+}
+.product-name:hover{
+    cursor: pointer;
+    color: rgb(211, 16, 81);
+}
+.card-item:hover{
+    background-color:rgba(231, 231, 231, 0.68);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+    font-size: 1.2rem;
+    text-align:center;
+  }

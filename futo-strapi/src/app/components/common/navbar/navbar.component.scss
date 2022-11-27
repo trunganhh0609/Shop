@@ -1051,3 +1051,23 @@
     align-items: center;
     border-radius: 30px;
 }
+
+.log-out{
+    cursor: pointer;
+}
+.log-out:hover{
+    color:red
+}
+
+.login{
+    cursor: pointer;
+}
+.login:hover{
+    color:rgb(140, 249, 62)
+}
+.cart{
+    cursor: pointer;
+}
+.cart:hover{
+    color:rgb(255, 0, 119)
+}

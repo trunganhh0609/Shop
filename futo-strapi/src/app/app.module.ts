@@ -61,6 +61,11 @@ import { CollectionPageComponent } from './components/pages/collection-page/coll
 import { ItemDetailsPageComponent } from './components/pages/item-details-page/item-details-page.component';
 import { BlogCategoryPageComponent } from './components/pages/blog-category-page/blog-category-page.component';
 import { NftsCategoryPageComponent } from './components/pages/nfts-category-page/nfts-category-page.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ShoppingCartComponent } from './components/pages/shopping-cart/shopping-cart.component';
+import { PaymentComponent } from './components/pages/payment/payment.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 
 @NgModule({
     declarations: [
@@ -111,7 +116,10 @@ import { NftsCategoryPageComponent } from './components/pages/nfts-category-page
         CollectionPageComponent,
         ItemDetailsPageComponent,
         BlogCategoryPageComponent,
-        NftsCategoryPageComponent
+        NftsCategoryPageComponent,
+        ShoppingCartComponent,
+        PaymentComponent,
+        ProductCategoryComponent
     ],
     imports: [
         BrowserModule,
@@ -127,9 +135,10 @@ import { NftsCategoryPageComponent } from './components/pages/nfts-category-page
         TabsModule,
         HttpClientModule,
         NgxPaginationModule,
-        MarkdownModule.forRoot()
+        MarkdownModule.forRoot(),
+        ToastModule
     ],
-    providers: [],
+    providers: [MessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

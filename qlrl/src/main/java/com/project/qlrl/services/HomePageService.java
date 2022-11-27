@@ -4,7 +4,6 @@ import com.project.qlrl.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,4 +24,6 @@ public class HomePageService {
         }
         return result;
     }
+
+
 }

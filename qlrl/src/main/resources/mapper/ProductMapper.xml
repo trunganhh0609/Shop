@@ -36,5 +36,135 @@
         order BY product.PRODUCT_ID DESC LIMIT 8
     </select>
 
+    <select id="getProductById" parameterType="map" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.CATEGORY_ID,
+        product.PRICE,
+        product.DESCRIPTION,
+        promotion.PROMOTION_ID,
+        promotion.PROMOTION_NAME,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE,
+        category.CATEGORY_NAME
+        FROM product
+        INNER JOIN category ON category.CATEGORY_ID = product.CATEGORY_ID
+        LEFT JOIN promotion
+        ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        WHERE product.PRODUCT_ID = #{id}
+    </select>
 
+    <select id="getRelatedProduct" parameterType="map" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        promotion.PROMOTION_NAME,
+        product.DESCRIPTION,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM product
+        LEFT JOIN promotion ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        AND product.CATEGORY_ID = #{idCategory}
+        LIMIT 8
+    </select>
+
+    <select id="getCartByUserName" parameterType="map" resultType="map">
+        SELECT CART_ID FROM shopping_cart INNER JOIN user
+        ON shopping_cart.USER_ID = user.USER_ID WHERE user.USER_NAME = #{userId}
+    </select>
+
+    <select id="checkProductExitsInCart" parameterType="map" resultType="Integer">
+        SELECT cart_detail.QUANTITY FROM cart_detail
+        WHERE cart_detail.CART_ID = #{cartId}
+        AND cart_detail.PRODUCT_ID = #{productId}
+    </select>
+
+    <select id="getShoppingCart" parameterType="map" resultType="map">
+        SELECT
+        cart_detail.CART_DETAIL_ID,
+        cart_detail.PRODUCT_ID,
+        cart_detail.PRODUCT_ID,
+        cart_detail.QUANTITY,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM cart_detail
+        INNER JOIN product ON cart_detail.PRODUCT_ID = product.PRODUCT_ID
+        LEFT JOIN promotion ON promotion.PROMOTION_ID = product.PROMOTION_ID
+        WHERE cart_detail.CART_ID = #{cartId}
+    </select>
+
+    <update id="updateCartDetail" parameterType="map">
+        UPDATE cart_detail SET QUANTITY= #{quantity}
+        WHERE
+        CART_ID = #{cartId}
+        AND
+        cart_detail.PRODUCT_ID = #{productId};
+    </update>
+
+    <insert id="addToCart" parameterType="map">
+        INSERT INTO cart_detail
+        (CART_ID, PRODUCT_ID, QUANTITY) VALUES (#{cartId}, #{productId}, #{quantity});
+    </insert>
+
+    <delete id="deleteProductInCart" parameterType="map">
+        DELETE FROM cart_detail WHERE
+        CART_ID = #{cartId}
+        AND
+        cart_detail.PRODUCT_ID = #{productId};
+    </delete>
+
+    <insert id="saveOrder" parameterType="com.project.qlrl.models.Order" useGeneratedKeys="true" keyProperty="orderId" keyColumn="ORDER_ID">
+        INSERT INTO my_pham_shop.order
+        (USER_ID,
+        ADDRESS,
+        NOTE,
+        ORDER_DATE,
+        RECEIVER_NAME,
+        RECEIVER_PHONE,
+        STATUS)
+        VALUES
+        (#{userId},
+        #{address},
+        #{note},
+        NOW(),
+        #{receiverName},
+        #{receiverPhone},
+        0);
+    </insert>
+
+    <insert id="addProductToOrder" parameterType="map">
+        INSERT INTO my_pham_shop.product_oder
+        (PRODUCT_ID, QUANTITY, ORDER_ID) VALUES (#{PRODUCT_ID}, #{QUANTITY}, #{orderId});
+    </insert>
+
+    <delete id="deleteCartDetail" parameterType="map">
+        DELETE FROM my_pham_shop.cart_detail WHERE  CART_DETAIL_ID = #{CART_DETAIL_ID}
+    </delete>
+
+    <select id="getProductByCategory" parameterType="map" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        product.DESCRIPTION,
+        promotion.PROMOTION_NAME,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM product
+        LEFT JOIN promotion
+        ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        WHERE product.CATEGORY_ID = #{id}
+        <if test="maxPrice != ''">
+            AND #{maxPrice} > product.PRICE
+        </if>
+        order BY product.PRICE
+    </select>
 </mapper>

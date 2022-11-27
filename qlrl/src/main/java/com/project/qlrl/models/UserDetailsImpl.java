@@ -24,7 +24,7 @@ public class UserDetailsImpl implements UserDetails {
         // TODO Auto-generated method stub
         List<GrantedAuthority> authorities = new ArrayList<>();
 //        user.getRoles().forEach(r -> {
-            authorities.add(new SimpleGrantedAuthority(user.getRole()));
+            authorities.add(new SimpleGrantedAuthority(user.getROLE()));
 //        });
         return authorities;
     }
@@ -40,13 +40,13 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public String getPassword() {
         // TODO Auto-generated method stub
-        return user.getPassword();
+        return user.getPASSWORD();
     }
 
     @Override
     public String getUsername() {
         // TODO Auto-generated method stub
-        return user.getUserName();
+        return user.getUSER_NAME();
     }
 
     @Override

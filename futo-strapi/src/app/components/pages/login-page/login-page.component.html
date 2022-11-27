@@ -2,17 +2,7 @@
 <div class="inner-banner inner-bg6">
     <div class="container">
         <div class="inner-title">
-            <h1>Login to your Account</h1>
-            <ul>
-                <li>
-                    <a routerLink="/">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    Login
-                </li>
-            </ul>
+            <h1>Đăng nhập để tiếp tục</h1>>
             <div class="inner-shape">
                 <img src="assets/images/inner-banner/inner-shape1.png" alt="shape">
                 <img src="assets/images/inner-banner/inner-shape2.png" alt="shape">
@@ -22,20 +12,21 @@
 </div>
 
 <!-- Login -->
+<p-toast></p-toast>
 <div class="user-area ptb-100">
     <div class="container">
         <div class="user-all-form">
             <form>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="userName" [(ngModel)]="userName">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" type="password" name="password">
+                    <label>Mật khẩu</label>
+                    <input class="form-control" type="password" name="password" [(ngModel)]="password">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="default-btn">Log In Now</button>
+                    <button type="submit" class="default-btn" (click)="login()">Log In Now</button>
                 </div>
                 <div class="sub-title">
                     <span>Or</span>
