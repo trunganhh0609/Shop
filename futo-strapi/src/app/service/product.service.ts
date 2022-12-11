@@ -65,7 +65,20 @@ export class ProductService {
   getProductByCategory(param:any):Observable<any> {
     const headers: HttpHeaders = HeadersUtil.getHeadersAuth();
     const params: RequestParam[] = ParamUtil.toRequestParams(param);
-    const url = ApiUrlUtil.buildQueryString(environment.apiURL + '/getProductByCategory', params);
+    const url = ApiUrlUtil.buildQueryString(environment.publicURL + '/getProductByCategory', params);
+    return this.http.get<any>(url, { headers: headers });
+  }
+  search(param:any):Observable<any> {
+    const headers: HttpHeaders = HeadersUtil.getHeadersAuth();
+    const params: RequestParam[] = ParamUtil.toRequestParams(param);
+    const url = ApiUrlUtil.buildQueryString(environment.publicURL + '/search', params);
+    return this.http.get<any>(url, { headers: headers });
+  }
+
+  getMyOrder(param: any):Observable<any>{
+    const headers: HttpHeaders = HeadersUtil.getHeadersAuth();
+    const params: RequestParam[] = ParamUtil.toRequestParams(param);
+    const url = ApiUrlUtil.buildQueryString(environment.apiURL + '/getMyOrder', params);
     return this.http.get<any>(url, { headers: headers });
   }
 }

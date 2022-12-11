@@ -25,6 +25,7 @@ import { HomeDemoTwoComponent } from './components/pages/home-demo-two/home-demo
 import { ItemDetailsPageComponent } from './components/pages/item-details-page/item-details-page.component';
 import { LiveAuctionPageComponent } from './components/pages/live-auction-page/live-auction-page.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { MyOrderComponent } from './components/pages/my-order/my-order.component';
 import { NftsCategoryPageComponent } from './components/pages/nfts-category-page/nfts-category-page.component';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
 import { PaymentComponent } from './components/pages/payment/payment.component';
@@ -44,7 +45,7 @@ const routes: Routes = [
     {path: 'explore-4', component: ExplorePageFourComponent},
     {path: 'explore-5', component: ExplorePageFiveComponent},
     {path: 'explore-6', component: ExplorePageSixComponent},
-    {path: 'explore-7', component: ExplorePageSevenComponent},
+    {path: 'admin', component: ExplorePageSevenComponent},
     {path: 'product-detail', component: ItemDetailsPageComponent},
     {path: 'category/:slug', component: NftsCategoryPageComponent},
     {path: 'collection', component: CollectionPageComponent},
@@ -67,6 +68,7 @@ const routes: Routes = [
     {path: 'shopping-cart', component: ShoppingCartComponent},
     {path: 'payment', component: PaymentComponent},
     {path: 'product-category', component: ProductCategoryComponent},
+    {path: 'my-order', component: MyOrderComponent},
     // Here add new pages component
 
     {path: '**', component: NotFoundPageComponent} // This line will remain down from the whole pages component list

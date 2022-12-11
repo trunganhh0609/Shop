@@ -60,6 +60,7 @@ export class PaymentComponent implements OnInit {
     console.log(data)
     data['userId'] = this.userInfo.USER_ID
     data['lstProduct'] = this.lstProduct
+    data['total'] = this.total;
     this.productService.saveOrder(data).subscribe(res =>{
         console.log(res);
         if(res.success){

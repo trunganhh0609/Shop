@@ -20,8 +20,10 @@ export class ItemDetailsPageComponent implements OnInit {
     quantity:number = 1;
     product: any = {};
     lstRelatedProduct:any = [];
+    srcImg: any = environment.imgURL;
+
     feedbackSlides: OwlOptions = {
-        items: 5,
+        items: 4,
 		nav: true,
 		loop: true,
 		margin: 25,
@@ -51,7 +53,6 @@ export class ItemDetailsPageComponent implements OnInit {
     }
 
     async getData(){
-
         await this.route.queryParams.subscribe(async res =>{
             this.productService.getProductDetail(res).subscribe(data =>{
                 this.quantity = 1;

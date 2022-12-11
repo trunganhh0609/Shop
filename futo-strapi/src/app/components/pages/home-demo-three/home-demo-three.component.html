@@ -9,8 +9,7 @@
                     <div class="wallet-card" >
                         <div (click)="goToDetail(item)">
                             <div class="badge" *ngIf="item.VALUE">{{ item.PROMOTION_NAME }}-{{ item.VALUE  | number}}%</div>
-                            <img src="https://product.hstatic.net/1000246282/product/1_bea109509dd7499883834e5d7faa2c81.png" alt="wallet">
-                            <h3>
+                            <img style="width:280px; height:280px;object-fit: fill;" [src]="srcImg + item.IMAGE" alt="img">                            <h3>
                                 <a>
                                     {{ item.PRODUCT_NAME }}
                                 </a>
@@ -29,7 +28,7 @@
 
                         <div class="d-flex justify-content-center">
                             <button class="custom-btn" style="width: 60%" (click)="addToCart(item)">
-                                Add to cart
+                                Thêm vào giỏ hàng
                                 <i class="ri-shopping-cart-line"></i>
                             </button>
                         </div>
@@ -69,7 +68,7 @@
                         <div class="wallet-card" >
                             <div (click)="goToDetail(item)">
                                 <div class="badge" *ngIf="item.VALUE">{{ item.PROMOTION_NAME }}-{{ item.VALUE  | number}}%</div>
-                                <img src="https://product.hstatic.net/1000246282/product/1_bea109509dd7499883834e5d7faa2c81.png" alt="wallet">
+                                <img style="width:280px; height:280px;object-fit: fill;" [src]="srcImg + item.IMAGE" alt="img">
                                 <h3>
                                     <a>
                                         {{ item.PRODUCT_NAME }}
@@ -89,7 +88,7 @@
 
                             <div class="d-flex justify-content-center">
                                 <button class="custom-btn" style="width: 60%" (click)="addToCart(item)">
-                                    Add to cart
+                                    Thêm vào giỏ hàng
                                     <i class="ri-shopping-cart-line"></i>
                                 </button>
                             </div>
@@ -101,7 +100,7 @@
         </div>
     </div>
 </div>
-<div class="feedback-area ptb-100">
+<!-- <div class="feedback-area ptb-100">
     <div class="container">
         <h2 style="color:rgb(211, 16, 81)">Thương hiệu nổi bật</h2>
         <div
@@ -132,6 +131,6 @@
             </owl-carousel-o>
         </div>
     </div>
-</div>
+</div> -->
 
 

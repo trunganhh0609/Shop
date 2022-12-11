@@ -4,11 +4,12 @@
 <mapper namespace="com.project.qlrl.repository.UserRepos">
 
     <select resultType="com.project.qlrl.models.User" parameterType="map" id="getUserByUserName">
-        SELECT * FROM user WHERE USER_NAME = #{userName}
+        SELECT * FROM user WHERE USER_NAME = #{userName} AND user.STATUS = 1
     </select>
 
     <select resultType="map" id="getAllUser">
-        SELECT * FROM user
+        SELECT USER_ID, USER_NAME, FULL_NAME, BIRTH_DATE, PHONE_NUMBER, ROLE, STATUS FROM user
+        order BY USER_ID
     </select>
 
     <select resultType="map" id="getUserRole" parameterType="Map">
@@ -25,5 +26,67 @@
         WHERE USER_NAME = #{userName}
     </select>
 
+    <insert id="addUser" parameterType="map">
+        INSERT INTO user (USER_NAME, FULL_NAME, BIRTH_DATE, PASSWORD, PHONE_NUMBER, ROLE, STATUS)
+        VALUES
+        (
+        #{userName},
+        #{fullName},
+        #{dob},
+        #{pwd},
+        #{phone},
+        #{role},
+        1
+        );
+    </insert>
 
+    <update id="updateUser" parameterType="map" >
+        UPDATE user SET
+        <if test="userName != null and userName != ''">
+            USER_NAME= #{userName},
+        </if>
+        <if test="fullName != null and fullName != ''">
+            FULL_NAME= #{fullName},
+        </if>
+        <if test="birthDate != null and birthDate != ''">
+            BIRTH_DATE= #{birthDate},
+        </if>
+
+        <if test="pwd != null and pwd != ''">
+            PASSWORD = #{password},
+        </if>
+
+        <if test="phone != null and phone != ''">
+            PHONE_NUMBER= #{phone},
+        </if>
+        <if test="role != null and role != ''">
+            ROLE= #{role}
+        </if>
+
+        WHERE  USER_ID= #{userId};
+    </update>
+
+    <update id="blockUser" parameterType="map">
+        UPDATE user SET
+        STATUS = 0
+        WHERE USER_ID = #{userId}
+    </update>
+
+    <update id="activeUser" parameterType="map">
+        UPDATE user SET
+        STATUS = 1
+        WHERE USER_ID = #{userId}
+    </update>
+
+    <select id="checkExitsPhoneNumber" parameterType="map" resultType="Integer">
+        SELECT (COUNT(*)) FROM user WHERE PHONE_NUMBER = #{phone}
+    </select>
+
+    <insert id="addUserCart" parameterType="map">
+        INSERT INTO `my_pham_shop`.`shopping_cart` (`USER_ID`) VALUES (#{userId});
+    </insert>
+
+    <select id="getLastInsert" resultType="Integer">
+        SELECT LAST_INSERT_ID();
+    </select>
 </mapper>

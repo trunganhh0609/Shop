@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { ProductService } from 'src/app/service/product.service';
 import { AuthenticationUtil } from 'src/app/utils/authentication.util';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-navbar',
@@ -13,6 +14,11 @@ import { AuthenticationUtil } from 'src/app/utils/authentication.util';
 })
 export class NavbarComponent implements OnInit {
     numberInCart : number = 0 ;
+    keySearch: any = "";
+    numbers = Array(50).fill(0);
+    lstProduct: any = [];
+    srcImg: any = environment.imgURL;
+    options = { autoHide: true, scrollbarMinSize: 100 };
     constructor(
         private authService: AuthenticationService,
         private navbarService: NavbarService,
@@ -61,6 +67,21 @@ export class NavbarComponent implements OnInit {
     }
     goToPC(data: any, name: string){
         this.router.navigate(["/product-category"],{queryParams: {id : data, title: name}})
+    }
+
+    search(){
+        this.lstProduct = []
+        console.log(this.keySearch)
+        this.productService.search({"keySearch": this.keySearch}).subscribe(res => {
+            console.log(res)
+            this.lstProduct = res.data
+        })
+    }
+    goToDetail(item:any){
+        console.log(item)
+        this.keySearch=''
+        this.router.navigate(["/product-detail"], {queryParams:{id:item.PRODUCT_ID}})
+
     }
 
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { ProductService } from 'src/app/service/product.service';
 import { AuthenticationUtil } from 'src/app/utils/authentication.util';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,6 +13,7 @@ import { AuthenticationUtil } from 'src/app/utils/authentication.util';
 export class ShoppingCartComponent implements OnInit {
     lstProduct: any = [];
     total: number = 0;
+    srcImg: any = environment.imgURL;
   constructor(
     private productService: ProductService,
     private navbarService: NavbarService,

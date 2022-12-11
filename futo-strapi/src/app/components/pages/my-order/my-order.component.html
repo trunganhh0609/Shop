@@ -1,0 +1,44 @@
+
+<p-toast></p-toast>
+<!-- Item Details -->
+<div class="item-details-area pt-100">
+    <div class="container">
+        <h2 style="color:rgb(211, 16, 81); margin-bottom:50px">Đơn hàng</h2>
+
+        <div class="row mx-5">
+            <h3 class="text-center my-5" *ngIf="lstOrder.length <= 0">Hiện không có đơn hàng nào</h3>
+            <div class="col-md-12 " style="padding-left:0; border-radius:5px;" *ngIf="lstOrder.length > 0">
+                <div class="card-item row my-1" *ngFor="let item of lstOrder; let i = index">
+                    <!-- <div class="col-md-2 px-0">
+                        <img style="border-radius: 5px;width:100px; height:100px;object-fit: fill;" [src]="srcImg + item.IMAGE" alt="img">
+                    </div> -->
+                    <div class="col-md-12 mb-3" style="min-height: 150px;padding: 50px;border-radius: 5px;">
+                        <div class="d-flex">
+                            <p class="product-name fs-5 mx-4 mb-0">{{ i+1 }}</p>
+                            <p class="product-name fs-5 mb-0" ><span style="color:rgb(211, 16, 81);">Người nhận: </span>{{ item.RECEIVER_NAME }}</p>
+                        </div>
+                        <div class="d-flex" style="margin-left: 30px;">
+                            <p class="product-name fs-5 mx-4" ><span style="color:rgb(211, 16, 81);">Số điện thoại: </span>{{ item.RECEIVER_PHONE }}</p>
+                        </div>
+                        <div class="d-flex" style="margin-left: 30px;">
+                            <p class="product-name fs-5 mx-4" ><span style="color:rgb(211, 16, 81);">Ngày đặt: </span>{{ item.ORDER_DATE | date:'dd/MM/yyyy' }}</p>
+                        </div>
+                        <div class="d-flex" style="margin-left: 30px;">
+                            <p class="product-name fs-5 mx-4" ><span style="color:rgb(211, 16, 81);">Địa chỉ: </span>{{ item.ADDRESS }}</p>
+                        </div>
+                        <div class="d-flex" style="margin-left: 30px;">
+                            <p class="product-name fs-5 mx-4" ><span style="color:rgb(211, 16, 81);">Trạng thái đơn hàng : </span>{{ item.STATUS == true? 'Đã giao hàng': 'Đang giao' }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3"style="position: relative;">
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+ </div>
+</div>
+
+

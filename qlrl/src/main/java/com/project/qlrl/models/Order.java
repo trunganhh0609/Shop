@@ -8,9 +8,18 @@ public class Order {
     String note;
     String receiverName;
     String receiverPhone;
+    String total;
 
     public long getOrderId() {
         return orderId;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     public Order() {
@@ -68,7 +77,7 @@ public class Order {
         this.receiverPhone = receiverPhone;
     }
 
-    public Order(long orderId, long userId, String address, long promotionId, String note, String receiverName, String receiverPhone) {
+    public Order(long orderId, long userId, String address, long promotionId, String note, String receiverName, String receiverPhone, String total) {
         this.orderId = orderId;
         this.userId = userId;
         this.address = address;
@@ -76,5 +85,6 @@ public class Order {
         this.note = note;
         this.receiverName = receiverName;
         this.receiverPhone = receiverPhone;
+        this.total = total;
     }
 }

@@ -210,7 +210,7 @@ img {
 .section-title {
     position: relative;
     margin-bottom: 45px;
-    
+
     .sub-title {
         margin-bottom: 15px;
         display: inline-block;
@@ -343,7 +343,7 @@ img {
                 align-items: center;
                 justify-content: center;
                 min-width: unset !important;
-    
+
                 div {
                     position: relative;
                     padding: 0 !important;
@@ -362,7 +362,7 @@ img {
                     };
                     &:last-child {
                         margin-right: 0;
-    
+
                         &::before {
                             display: none;
                         }
@@ -439,7 +439,7 @@ img {
                 align-items: center;
                 justify-content: center;
                 min-width: unset !important;
-    
+
                 div {
                     position: relative;
                     padding: 0 !important;
@@ -458,7 +458,7 @@ img {
                     };
                     &:last-child {
                         margin-right: 0;
-    
+
                         &::before {
                             display: none;
                         }
@@ -488,7 +488,7 @@ img {
                 align-items: center;
                 justify-content: center;
                 min-width: unset !important;
-    
+
                 div {
                     position: relative;
                     padding: 0 !important;
@@ -507,7 +507,7 @@ img {
                     };
                     &:last-child {
                         margin-right: 0;
-    
+
                         &::before {
                             display: none;
                         }
@@ -537,7 +537,7 @@ img {
                 align-items: center;
                 justify-content: center;
                 min-width: unset !important;
-    
+
                 div {
                     position: relative;
                     padding: 0 !important;
@@ -556,7 +556,7 @@ img {
                     };
                     &:last-child {
                         margin-right: 0;
-    
+
                         &::before {
                             display: none;
                         }
@@ -586,7 +586,7 @@ img {
                 align-items: center;
                 justify-content: center;
                 min-width: unset !important;
-    
+
                 div {
                     position: relative;
                     padding: 0 !important;
@@ -605,7 +605,7 @@ img {
                     };
                     &:last-child {
                         margin-right: 0;
-    
+
                         &::before {
                             display: none;
                         }
@@ -697,7 +697,7 @@ img {
                 align-items: center;
                 justify-content: center;
                 min-width: unset !important;
-    
+
                 div {
                     position: relative;
                     padding: 0 !important;
@@ -716,7 +716,7 @@ img {
                     };
                     &:last-child {
                         margin-right: 0;
-    
+
                         &::before {
                             display: none;
                         }
@@ -869,7 +869,7 @@ img {
             transition: var(--transition);
             background-color: var(--whiteColor);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
-            
+
             &:hover {
                 color: var(--whiteColor);
                 background-color: var(--mainColor);
@@ -914,7 +914,7 @@ img {
                 position: relative;
                 margin-right: 30px;
                 font-size: 18px;
-                
+
                 &::before {
                     top: 50%;
                     width: 5px;
@@ -928,7 +928,7 @@ img {
                 }
                 a {
                     color: var(--whiteColor);
-                    
+
                     &:hover {
                         color: var(--mainColor);
                     }
@@ -944,25 +944,25 @@ img {
         }
     }
     &.inner-bg1 {
-        background-image: url(assets/images/inner-banner/inner-banner1.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner1.jpg);
     }
     &.inner-bg2 {
-        background-image: url(assets/images/inner-banner/inner-banner2.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner2.jpg);
     }
     &.inner-bg3 {
-        background-image: url(assets/images/inner-banner/inner-banner3.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner3.jpg);
     }
     &.inner-bg4 {
-        background-image: url(assets/images/inner-banner/inner-banner4.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner4.jpg);
     }
     &.inner-bg5 {
-        background-image: url(assets/images/inner-banner/inner-banner5.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner5.jpg);
     }
     &.inner-bg6 {
-        background-image: url(assets/images/inner-banner/inner-banner6.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner6.jpg);
     }
     &.inner-bg7 {
-        background-image: url(assets/images/inner-banner/inner-banner7.jpg);
+        // background-image: url(assets/images/inner-banner/inner-banner7.jpg);
     }
     .inner-shape {
         img {
@@ -1058,7 +1058,7 @@ img {
                 transition: var(--transition);
                 background: linear-gradient(180deg, #ffffff 0%, #eaeef3 100%);
                 box-shadow: 0 5px 15px 0 rgba(107, 124, 147, .15), 0 2px 4px 0 rgba(107, 124, 147, .20), inset 0 -2px 0 0 #c2cfde;
-                
+
                 &:hover {
                     color: var(--mainColor);
                 }
@@ -1109,7 +1109,7 @@ img {
             margin-bottom: 15px;
             background-color: var(--whiteColor);
             box-shadow: 2px 8px 20px 0 rgba(25, 42, 70, 0.13) !important;
-            
+
             &:last-child {
                 margin-bottom: 0;
             }
@@ -1171,7 +1171,7 @@ img {
                     li {
                         margin-bottom: 12px;
                         color: var(--bodyColor);
-                        
+
                         &:last-child {
                             margin-bottom: 0;
                         }
@@ -1192,7 +1192,7 @@ img {
     .content {
         .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
             margin-bottom: 10px;
-    
+
             &:not(:first-child) {
                 margin-top: 25px;
             }
@@ -1205,7 +1205,7 @@ img {
             li {
                 color: var(--bodyColor);
                 margin-bottom: 15px;
-    
+
                 &:last-child {
                     margin-bottom: 0;
                 }
@@ -1291,7 +1291,7 @@ img {
     .section-title {
         text-align: center;
         margin-bottom: 30px;
-        
+
         h2 {
             font-size: 28px;
         }
@@ -1313,7 +1313,7 @@ img {
                         };
                         &:last-child {
                             margin-right: 0;
-        
+
                             &::before {
                                 display: none;
                             }
@@ -1421,10 +1421,10 @@ img {
             position: relative;
             right: 0;
             top: 0;
-    
+
             .owl-dot {
                 display: inline-block;
-    
+
                 span {
                     margin: 0 4px;
                     height: 8px !important;
@@ -1544,7 +1544,7 @@ img {
                 li {
                     margin-right: 25px;
                     font-size: 15px;
-                    
+
                     &::before {
                         right: -15px;
                     }
@@ -1558,7 +1558,7 @@ img {
     .pagination-area {
         margin-top: 0;
         padding-top: 25px;
-    
+
         .page-numbers {
             width: 35px;
             height: 35px;
@@ -1622,7 +1622,7 @@ img {
             .timer {
                 .countdown, div {
                     justify-content: unset;
-    
+
                     div {
                         font: {
                             size: 17px !important;
@@ -1828,10 +1828,10 @@ img {
             position: relative;
             right: 0;
             top: 0;
-    
+
             .owl-dot {
                 display: inline-block;
-    
+
                 span {
                     margin: 0 4px;
                     height: 8px !important;

@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <div class="item-details-left-side pr-20">
                     <div class="item-details-img">
-                        <img src="https://product.hstatic.net/1000246282/product/1_bea109509dd7499883834e5d7faa2c81.png" alt="nft-image">
+                        <img style="width:600px; height:470px;object-fit: fill;" [src]="srcImg + product.IMAGE" alt="img">
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                         <ng-template carouselSlide *ngFor="let item of lstRelatedProduct">
                                 <div class="wallet-card" (click)="goToDetail(item)">
                                     <div>
-                                        <img src="https://product.hstatic.net/1000246282/product/1_bea109509dd7499883834e5d7faa2c81.png" alt="wallet">
+                                        <img style="width:280px; height:280px;object-fit: cover;" [src]="srcImg + item.IMAGE" alt="img">
                                         <h3>
                                             <a>
                                                 {{ item.PRODUCT_NAME }}
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <button class="custom-btn" style="width: 60%" (click)="item['isRelated'] = true ;addToCart(item)">
-                                            Add to cart
+                                            Thêm vào giỏ hàng
                                             <i class="ri-shopping-cart-line"></i>
                                         </button>
                                     </div>

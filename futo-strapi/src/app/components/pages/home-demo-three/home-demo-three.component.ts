@@ -6,6 +6,7 @@ import { HomePageService } from 'src/app/service/home-page.service';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { ProductService } from 'src/app/service/product.service';
 import { AuthenticationUtil } from 'src/app/utils/authentication.util';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +17,7 @@ import Swal from 'sweetalert2';
 export class HomeDemoThreeComponent implements OnInit {
     lstPromotionProduct: any = [];
     lstNewProduct: any = [];
+    srcImg: any = environment.imgURL;
     constructor(
         public router: Router,
         private homePageService: HomePageService,

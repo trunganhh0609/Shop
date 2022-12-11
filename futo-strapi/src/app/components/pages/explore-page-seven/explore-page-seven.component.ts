@@ -13,9 +13,7 @@ export class ExplorePageSevenComponent implements OnInit {
 	constructor(
         private content: PopularNftsService
 	) {
-		this.content.getData().subscribe((nftItemsData: any) => {
-            this.nftItemsData = nftItemsData.data;
-        });
+		// window.location.href = "http://localhost:4300/";
 	}
 
     ngOnInit(): void {}

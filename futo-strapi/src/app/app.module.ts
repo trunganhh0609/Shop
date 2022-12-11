@@ -66,6 +66,8 @@ import { MessageService } from 'primeng/api';
 import { ShoppingCartComponent } from './components/pages/shopping-cart/shopping-cart.component';
 import { PaymentComponent } from './components/pages/payment/payment.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
+import { SimplebarAngularModule } from 'simplebar-angular';
+import { MyOrderComponent } from './components/pages/my-order/my-order.component';
 
 @NgModule({
     declarations: [
@@ -119,7 +121,8 @@ import { ProductCategoryComponent } from './product-category/product-category.co
         NftsCategoryPageComponent,
         ShoppingCartComponent,
         PaymentComponent,
-        ProductCategoryComponent
+        ProductCategoryComponent,
+        MyOrderComponent
     ],
     imports: [
         BrowserModule,
@@ -136,7 +139,8 @@ import { ProductCategoryComponent } from './product-category/product-category.co
         HttpClientModule,
         NgxPaginationModule,
         MarkdownModule.forRoot(),
-        ToastModule
+        ToastModule,
+        SimplebarAngularModule
     ],
     providers: [MessageService],
     bootstrap: [AppComponent]

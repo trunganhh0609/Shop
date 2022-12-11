@@ -6,6 +6,7 @@
     <select id="getLstPromotionProduct" resultType="map">
         SELECT
         product.PRODUCT_ID,
+        product.IMAGE,
         product.PRODUCT_NAME,
         product.PRICE,
         product.DESCRIPTION,
@@ -24,6 +25,7 @@
         SELECT
         product.PRODUCT_ID,
         product.PRODUCT_NAME,
+        product.IMAGE,
         product.PRICE,
         product.DESCRIPTION,
         promotion.PROMOTION_NAME,
@@ -35,11 +37,27 @@
         ON product.PROMOTION_ID = promotion.PROMOTION_ID
         order BY product.PRODUCT_ID DESC LIMIT 8
     </select>
-
+    <select id="search" resultType="map" parameterType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        product.IMAGE,
+        product.DESCRIPTION,
+        promotion.PROMOTION_NAME,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM product
+        LEFT JOIN promotion
+        ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        WHERE product.PRODUCT_NAME LIKE CONCAT('%',#{keySearch},'%')
+    </select>
     <select id="getProductById" parameterType="map" resultType="map">
         SELECT
         product.PRODUCT_ID,
         product.PRODUCT_NAME,
+        product.IMAGE,
         product.CATEGORY_ID,
         product.PRICE,
         product.DESCRIPTION,
@@ -61,6 +79,7 @@
         product.PRODUCT_ID,
         product.PRODUCT_NAME,
         product.PRICE,
+        product.IMAGE,
         promotion.PROMOTION_NAME,
         product.DESCRIPTION,
         promotion.VALUE,
@@ -91,6 +110,7 @@
         cart_detail.QUANTITY,
         product.PRODUCT_NAME,
         product.PRICE,
+        product.IMAGE,
         promotion.VALUE,
         promotion.START_DATE,
         promotion.END_DATE
@@ -128,6 +148,7 @@
         ORDER_DATE,
         RECEIVER_NAME,
         RECEIVER_PHONE,
+        TOTAL,
         STATUS)
         VALUES
         (#{userId},
@@ -136,6 +157,7 @@
         NOW(),
         #{receiverName},
         #{receiverPhone},
+        #{total},
         0);
     </insert>
 
@@ -153,6 +175,7 @@
         product.PRODUCT_ID,
         product.PRODUCT_NAME,
         product.PRICE,
+        product.IMAGE,
         product.DESCRIPTION,
         promotion.PROMOTION_NAME,
         promotion.VALUE,
@@ -166,5 +189,143 @@
             AND #{maxPrice} > product.PRICE
         </if>
         order BY product.PRICE
+    </select>
+
+    <select id="getPromotionCategory" parameterType="map" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        product.DESCRIPTION,
+        product.IMAGE,
+        promotion.PROMOTION_NAME,
+        promotion.VALUE,
+        promotion.START_DATE,
+        promotion.END_DATE
+        FROM product
+        INNER JOIN promotion
+        ON product.PROMOTION_ID = promotion.PROMOTION_ID
+        <if test="maxPrice != ''">
+            WHERE #{maxPrice} > (product.PRICE * (100 - promotion.VALUE) / 100)
+        </if>
+        order BY product.PRICE
+    </select>
+
+    <insert id="addProduct" parameterType="com.project.qlrl.models.Product" useGeneratedKeys="true" keyProperty="productId" keyColumn="PRODUCT_ID">
+        INSERT INTO product
+        (PRODUCT_NAME,
+        CATEGORY_ID,
+        PRICE,
+        IMAGE,
+        DESCRIPTION
+        <if test="promotionId != ''">
+            ,PROMOTION_ID
+        </if>
+
+        )
+        VALUES (
+        #{productName},
+        #{categoryId},
+        #{price},
+        #{image},
+        #{description}
+        <if test="promotionId != ''">
+            , #{promotionId}
+        </if>
+
+        );
+    </insert>
+
+    <select id="getAllCategory" resultType="map">
+        SELECT * FROM category
+    </select>
+
+    <select id="getPromotionInThisTime" resultType="map">
+        SELECT * FROM promotion WHERE NOW() >= promotion.START_DATE AND promotion.END_DATE >= NOW()
+    </select>
+
+    <select id="getPromotion" resultType="map">
+        SELECT * FROM promotion
+    </select>
+
+    <insert id="addProductToWareHouse" parameterType="map" >
+        INSERT INTO ware_house
+        (PRODUCT_ID,
+        QUANTITY)
+        VALUES (
+        #{productId},
+        #{quantity} )
+    </insert>
+
+    <select id="getProductMng" resultType="map">
+        SELECT
+        product.PRODUCT_ID,
+        product.PRODUCT_NAME,
+        product.PRICE,
+        product.IMAGE,
+        product.DESCRIPTION,
+        product.PROMOTION_ID,
+        product.CATEGORY_ID,
+        category.CATEGORY_NAME,
+        ware_house.QUANTITY
+        FROM product
+        INNER JOIN ware_house ON product.PRODUCT_ID = ware_house.PRODUCT_ID
+        INNER JOIN category ON product.CATEGORY_ID = category.CATEGORY_ID
+        order BY product.PRODUCT_ID
+    </select>
+
+    <update id="editProduct" parameterType="map">
+        UPDATE product SET
+        <if test="productName != null and productName != ''">
+            PRODUCT_NAME = #{productName}
+        </if>
+        <if test="categoryId != null and categoryId != ''">
+            ,CATEGORY_ID = #{categoryId}
+        </if>
+        <if test="price != null and price != ''">
+            ,PRICE = #{price}
+        </if>
+        <if test="image != null and image != ''">
+            ,IMAGE = #{image}
+        </if>
+        <if test="description != null and description != ''">
+            ,DESCRIPTION = #{description}
+        </if>
+        <if test="promotionId != null and promotionId != ''">
+            ,PROMOTION_ID = #{promotionId}
+        </if>
+        WHERE  PRODUCT_ID = #{productId};
+    </update>
+
+    <update id="updateWareHouse" parameterType="map">
+        UPDATE ware_house SET QUANTITY = #{quantity},
+        UPDATED_DATE = NOW()
+        WHERE PRODUCT_ID = #{productId}
+    </update>
+
+    <delete id="deleteProduct" parameterType="map">
+        DELETE FROM product WHERE PRODUCT_ID = #{productId}
+    </delete>
+
+    <delete id="deleteProductInWareHouse" parameterType="map">
+        DELETE FROM ware_house WHERE PRODUCT_ID = #{productId}
+    </delete>
+
+    <select id="getMyOrder" parameterType="map" resultType="map">
+        SELECT
+        `order`.ORDER_ID,
+        `order`.USER_ID,
+        `order`.ADDRESS,
+        `order`.ORDER_DATE,
+        `order`.RECEIVER_NAME,
+        `order`.RECEIVER_PHONE,
+        `order`.STATUS
+        FROM `order`
+        INNER JOIN user ON user.USER_ID = `order`.USER_ID
+        WHERE user.USER_NAME = #{userName}
+    </select>
+
+    <select id="getAllOrder" resultType="map">
+        SELECT * FROM `order`
     </select>
 </mapper>

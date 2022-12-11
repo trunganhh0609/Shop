@@ -1,6 +1,7 @@
 package com.project.qlrl.repository;
 
 import com.project.qlrl.models.Order;
+import com.project.qlrl.models.Product;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -37,4 +38,32 @@ public interface ProductRepository {
     int deleteCartDetail(Map param);
 
     List<Map<Object,Object>> getProductByCategory(Map param);
+
+    List<Map<Object,Object>> getPromotionCategory(Map param);
+
+    List<Map<Object,Object>> search(Map param);
+
+    int addProduct(Product param);
+
+    int editProduct(Map param);
+
+    List<Map<Object, Object>> getPromotionInThisTime();
+
+    List<Map<Object, Object>> getPromotion();
+
+    List<Map<Object, Object>> getAllCategory();
+
+    int addProductToWareHouse(Map param);
+
+    List<Map<Object, Object>> getProductMng();
+
+    int deleteProduct(Map param);
+
+    int deleteProductInWareHouse(Map param);
+
+    int updateWareHouse(Map param);
+
+    List<Map<Object, Object>> getMyOrder(Map param);
+
+    List<Map<Object, Object>> getAllOrder();
 }

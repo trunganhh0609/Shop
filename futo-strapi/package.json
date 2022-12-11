@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.9",
+    "@angular/cdk": "^15.0.0",
     "@angular/common": "~13.3.9",
     "@angular/compiler": "~13.3.9",
     "@angular/core": "~13.3.9",
@@ -33,6 +34,7 @@
     "primeng": "^13.4.1",
     "remixicon": "^2.5.0",
     "rxjs": "~7.4.0",
+    "simplebar-angular": "^2.4.1",
     "sweetalert2": "^11.6.14",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

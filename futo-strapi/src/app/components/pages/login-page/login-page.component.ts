@@ -31,7 +31,12 @@ export class LoginPageComponent implements OnInit {
         console.log(result);
         if(result.jwt){
             AuthenticationUtil.saveToken(result.jwt)
-            this.router.navigate(['/'])
+            if(this.userName != 'admin'){
+                this.router.navigate(['/'])
+            }else{
+                window.location.href = "http://localhost:4300/";
+            }
+
         }else{
             this.showError();
         }

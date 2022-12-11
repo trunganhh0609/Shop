@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cookie } from 'ng2-cookies';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { NavbarService } from '../service/navbar.service';
 import { ProductService } from '../service/product.service';
@@ -15,6 +16,8 @@ export class ProductCategoryComponent implements OnInit {
     maxPrice: any = '';
     lstProduct:any = [];
     title: string = '';
+    srcImg: any = environment.imgURL;
+
   constructor(
     private route: ActivatedRoute,
         public router: Router,

@@ -1,0 +1,83 @@
+
+<div class="modal-header">
+  <h5 *ngIf="!data" class="modal-title mt-0 fs-4">Thêm người dùng</h5>
+  <h5 *ngIf="data" class="modal-title mt-0 fs-4">Cập nhật thông tin người dùng</h5>
+</div>
+<form #form="ngForm">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="userName">Tên đăng nhập</label>
+          <input #userName="ngModel" type="text" [(ngModel)]="dataUser['userName']" name="userName" required
+          [ngClass]="{ 'is-invalid': (submitted && userName.invalid) || (userName.invalid && (userName.dirty || userName.touched))}"
+          class="form-control" id="userName" placeholder="Nhập tên đăng nhập"/>
+
+          <div *ngIf="(userName.invalid && submitted) || userName.invalid && (userName.dirty || userName.touched)" class="invalid-feedback">
+            <div *ngIf="userName.errors.required">Trường này không được để trống</div>
+          </div>
+      </div>
+      <a *ngIf="data" class="mb-1" style="cursor: pointer;" (click)="changePwdIsShow = !changePwdIsShow">Đổi mật khẩu</a>
+      <div *ngIf="changePwdIsShow" class="col-md-12">
+        <input type="password" [(ngModel)]="dataUser['password']" name="password"
+          class="form-control" id="password" placeholder="Nhập mật khẩu mới"/>
+      </div>
+      <div *ngIf="!data" class="col-md-12 mb-3">
+        <label for="password">Mật khẩu</label>
+          <input #password="ngModel" type="password" [(ngModel)]="dataUser['password']" name="password" required
+          [ngClass]="{ 'is-invalid': (submitted && password.invalid) || (password.invalid && (password.dirty || password.touched))}"
+          class="form-control" id="password" placeholder="Nhập mật khẩu"/>
+
+        <div *ngIf="(password.invalid && submitted) || password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+          <div *ngIf="password.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <label for="fullName">Họ và tên</label>
+          <input #fullName="ngModel" type="text" [(ngModel)]="dataUser['fullName']" name="fullName" required
+          [ngClass]="{ 'is-invalid': (submitted && fullName.invalid) || (fullName.invalid && (fullName.dirty || fullName.touched))}"
+          class="form-control" id="fullName" placeholder="Nhập họ tên"/>
+
+        <div *ngIf="(fullName.invalid && submitted) || fullName.invalid && (fullName.dirty || fullName.touched)" class="invalid-feedback">
+          <div *ngIf="fullName.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="dob">Ngày sinh</label>
+          <input type="date" [ngModel]="dataUser.dob | date:'yyyy-MM-dd'" (change)="changeDate($event)" name="dob" required
+          class="form-control" id="dob"/>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="phone">Số điện thoại</label>
+          <input #phone="ngModel" type="text" maxlength="10" minlength="10" [(ngModel)]="dataUser['phone']" name="phone" required
+          [ngClass]="{ 'is-invalid': (submitted && phone.invalid) || (phone.invalid && (phone.dirty || phone.touched))}"
+          class="form-control" id="phone" placeholder="Nhập số điện thoại"/>
+
+        <div *ngIf="(phone.invalid && submitted) || phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
+          <div *ngIf="phone.errors.required">Trường này không được để trống</div>
+
+        </div>
+        <div *ngIf="(dataUser['phone'].length != 10  && submitted) || phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
+          <div>Số điện thoại phải là 10 số</div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <label for="phone">Quyền</label>
+        <select [(ngModel)]="dataUser['role']" name="role" class="form-select" required>
+          <option value="1" >Khách hàng</option>
+          <option value="0">Admin</option>
+        </select>
+      </div>
+
+    </div>
+
+    </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="submit()">Save changes</button>
+    <button type="button" class="btn btn-secondary"(click)="closePopup()">Close</button>
+  </div>
+</form>

@@ -2,17 +2,7 @@
 <div class="inner-banner inner-bg7">
     <div class="container">
         <div class="inner-title">
-            <h1>Create an Account</h1>
-            <ul>
-                <li>
-                    <a routerLink="/">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    Register
-                </li>
-            </ul>
+            <h1>Đăng ký tài khoản</h1>
             <div class="inner-shape">
                 <img src="assets/images/inner-banner/inner-shape1.png" alt="shape">
                 <img src="assets/images/inner-banner/inner-shape2.png" alt="shape">
@@ -24,43 +14,65 @@
 <!-- Register -->
 <div class="user-area ptb-100">
     <div class="container">
-        <div class="user-all-form">
-            <form>
+        <div class="user-all-form" style="background:#ebebeb;">
+            <form #form="ngForm">
                 <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" class="form-control">
+                    <label>Họ và tên<span class="fs-4" style="color:red;">*</span></label>
+                    <input #fullName="ngModel" type="text" [(ngModel)]="userData['fullName']" name="fullName" required class="form-control"
+                    [ngClass]="{ 'is-invalid': (submitted && fullName.invalid) || (fullName.invalid && (fullName.dirty || fullName.touched))}">
+                    <div *ngIf="(fullName.invalid && submitted) || fullName.invalid && (fullName.dirty || fullName.touched)" class="invalid-feedback">
+                        <div *ngIf="fullName.errors">Trường này không được để trống</div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label>Your Email</label>
-                    <input type="text" class="form-control">
+                    <label>Ngày sinh<span class="fs-4" style="color:red;">*</span></label>
+                    <input type="date"[(ngModel)]="userData['dob']" name="dob" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" type="password">
+                    <label>Số điện thoại<span class="fs-4" style="color:red;">*</span></label>
+                    <!-- <input type="text" [(ngModel)]="userData['phone']" name="phone" class="form-control"> -->
+                    <!-- <label for="phone">Số điện thoại</label> -->
+                    <input #phone="ngModel" type="text" maxlength="10" minlength="10"  [(ngModel)]="userData['phone']" name="phone" required
+                    [ngClass]="{ 'is-invalid': (submitted && phone.invalid) || (phone.invalid && (phone.dirty || phone.touched))}"
+                    class="form-control" id="phone" placeholder="Nhập số điện thoại"/>
+
+                    <div *ngIf="(!userData['phone'] || userData['phone'].length == 0)" class="invalid-feedback">
+                    <div>Trường này không được để trống</div>
+
+                    </div>
+                    <div *ngIf="(userData['phone'] && userData['phone'].length != 10  && submitted) || phone.invalid && (phone.dirty || phone.touched)" class="invalid-feedback">
+                    <div>Số điện thoại phải là 10 số</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tên đăng nhập<span class="fs-4" style="color:red;">*</span></label>
+                    <input #userName="ngModel" type="text" [(ngModel)]="userData['userName']" name="userName" required
+                    [ngClass]="{ 'is-invalid': (submitted && userName.invalid) || (userName.invalid && (userName.dirty || userName.touched))}"
+                    class="form-control" id="userName" placeholder="Nhập tên đăng nhập"/>
+
+                    <div *ngIf="(userName.invalid && submitted) || userName.invalid && (userName.dirty || userName.touched)" class="invalid-feedback">
+                        <div *ngIf="userName.errors">Trường này không được để trống</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu<span class="fs-4" style="color:red;">*</span></label>
+                    <input #password="ngModel" type="password" [(ngModel)]="userData['password']" name="password" required
+                    [ngClass]="{ 'is-invalid': (submitted && password.invalid) || (password.invalid && (password.dirty || password.touched))}"
+                    class="form-control" id="password" placeholder="Nhập mật khẩu"/>
+
+                    <div *ngIf="(password.invalid && submitted) || password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                    <div *ngIf="password.errors">Trường này không được để trống</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nhập lại mật khẩu<span class="fs-4" style="color:red;">*</span></label>
+                    <input class="form-control" type="password" [(ngModel)]="userData['confirmPassword']" name="confirmPassword">
+                    <p *ngIf="userData['confirmPassword'] != userData['password']" class="text-danger">Nhập lại mật khẩu chưa khớp</p>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="default-btn">Register Now</button>
+                    <button type="submit" class="default-btn" (click)="save(form.invalid)">Đăng ký</button>
                 </div>
-                <div class="sub-title">
-                    <span>Or</span>
-                </div>
-                <div class="login-with-account">
-                    <ul>
-                        <li>
-                            <a href="https://www.facebook.com/" target="_blank">
-                                <i class="ri-facebook-line"></i>
-                                Login with Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.google.com/" target="_blank">
-                                <i class="ri-google-line"></i>
-                                Login with Google
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <p>Already have an account? <a routerLink="/login">Login Now</a></p>
+                <p>Đã có tài khoản? <a routerLink="/login">Đăng nhập</a></p>
             </form>
         </div>
     </div>

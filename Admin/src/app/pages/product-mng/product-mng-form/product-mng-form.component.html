@@ -1,0 +1,82 @@
+
+<div class="modal-header">
+  <h5 *ngIf="!data" class="modal-title mt-0 fs-4">Thêm sản phẩm</h5>
+  <h5 *ngIf="data" class="modal-title mt-0 fs-4">Cập nhật thông tin sản phẩm</h5>
+</div>
+<div class="modal-body">
+  <ngx-simplebar>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="productName">Tên sản phẩm</label>
+          <input #productName="ngModel" type="text" [(ngModel)]="productData['productName']" name="productName" required
+          [ngClass]="{ 'is-invalid': (submitted && productName.invalid) || (productName.invalid && (productName.dirty || productName.touched))}"
+          class="form-control" id="productName" placeholder="Nhập tên sản phẩm"/>
+
+        <div *ngIf="(productName.invalid && submitted) || productName.invalid && (productName.dirty || productName.touched)" class="invalid-feedback">
+          <div *ngIf="productName.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <label for="category">Danh mục</label>
+        <select name="category" id="category"[(ngModel)]="productData['categoryId']" class="form-select" required>
+          <option value="" >Chọn danh mục cho sản phẩm</option>
+          <option *ngFor="let category of lstCategory" [value]="category.CATEGORY_ID">{{ category.CATEGORY_NAME }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="price">Giá</label>
+        <div class="d-flex">
+          <input #price="ngModel" type="number" [(ngModel)]="productData['price']" name="price" required
+          [ngClass]="{ 'is-invalid': (submitted && price.invalid) || (price.invalid && (price.dirty || price.touched))}"
+          class="form-control" id="price" placeholder="Nhập giá"/>
+          <p>VND</p>
+        </div>
+        <div *ngIf="(price.invalid && submitted) || price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
+          <div *ngIf="price.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="quantity">Số lượng</label>
+          <input #quantity="ngModel" type="number" [(ngModel)]="productData['quantity']" name="quantity" required
+          [ngClass]="{ 'is-invalid': (submitted && quantity.invalid) || (quantity.invalid && (quantity.dirty || quantity.touched))}"
+          class="form-control" id="quantity" placeholder="Nhập số lượng"/>
+        <div *ngIf="(price.invalid && submitted) || price.invalid && (price.dirty || price.touched)" class="invalid-feedback">
+          <div *ngIf="price.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <label for="phone">Khuyến mại</label>
+        <select [(ngModel)]="productData['promotionId']" class="form-select">
+          <option value="" >Chọn khuyến mại cho sản phẩm</option>
+          <option *ngFor="let promotion of lstPromotion" [value]="promotion.PROMOTION_ID">{{ promotion.PROMOTION_NAME }}-{{ promotion.VALUE }}%</option>
+        </select>
+      </div>
+
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label for="">Mô tả:</label>
+          <textarea class="form-control" name="note" id="" [(ngModel)]="productData['description']" cols="10" rows="3"></textarea>
+      </div>
+      </div>
+
+      <div class="image-upload">
+        <label for="inage">Ảnh</label>
+        <div>
+          <input type="file" accept="image/*" (change)="onSelectImg($event)">
+        </div>
+
+      </div>
+
+    </div>
+  </ngx-simplebar>
+
+
+  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="submit()">Save changes</button>
+  <button type="button" class="btn btn-secondary"(click)="closePopup()">Close</button>
+</div>

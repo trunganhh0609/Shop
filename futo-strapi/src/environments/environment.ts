@@ -5,6 +5,7 @@
 export const environment = {
     production: false,
     API_URL: 'http://localhost:1337/api',
+    imgURL:'http://localhost:8080/view/img-view/',
     publicURL: 'http://localhost:8080/api/public',
     apiURL: 'http://localhost:8080/api',
     authURL: 'http://localhost:8080/auth/login',

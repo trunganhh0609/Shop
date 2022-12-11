@@ -1,0 +1,15 @@
+.edit:hover{
+  color: rgb(86, 86, 248)
+}
+.edit{
+  cursor: pointer;
+}
+.del:hover{
+  color: rgb(247, 71, 71)
+}
+.del, .active{
+  cursor: pointer;
+}
+.active:hover{
+  color: rgb(70, 249, 21)
+}

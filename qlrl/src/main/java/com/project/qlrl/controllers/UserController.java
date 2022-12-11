@@ -29,4 +29,29 @@ public class UserController {
     public Map getUserInfo(@RequestParam Map param){
         return userService.getUserInfo(param);
     }
+
+    @PostMapping("/addUser")
+    public Map addUser(@RequestBody Map param){
+        return userService.addUser(param);
+    }
+
+    @PostMapping("/updateUser")
+    public Map updateUser(@RequestBody Map param){
+        return userService.updateUser(param);
+    }
+
+    @PostMapping("/blockUser")
+    public Map blockUser(@RequestBody Map param){
+        return userService.blockUser(param);
+    }
+
+    @PostMapping("/activeUser")
+    public Map activeUser(@RequestBody Map param){
+        return userService.activeUser(param);
+    }
+
+    @PostMapping("/public/register")
+    public Map register(@RequestBody Map param){
+        return userService.registerUser(param);
+    }
 }

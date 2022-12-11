@@ -1071,3 +1071,31 @@
 .cart:hover{
     color:rgb(255, 0, 119)
 }
+.result{
+    margin-left: 30px;
+    background-color: rgb(240, 240, 240);
+    z-index: 9999;
+    position: fixed;
+    border-radius: 5px;
+    border:1px solid rgb(161, 161, 161)
+}
+ngx-simplebar {
+    width: 400px;
+    max-height: 400px
+  }
+
+.item-result{
+    cursor: pointer;
+    padding: 5px;
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+.item-result:hover{
+    background-color:rgb(255, 255, 255);
+}
+.img-item-result{
+    height:60px
+}
+.result-lst{
+    padding: 0;
+}
