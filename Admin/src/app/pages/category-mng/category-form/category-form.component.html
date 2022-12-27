@@ -1,0 +1,26 @@
+
+<div class="modal-header">
+  <h5 *ngIf="!data" class="modal-title mt-0 fs-4">Thêm danh mục</h5>
+  <h5 *ngIf="data" class="modal-title mt-0 fs-4">Cập nhật thông tin danh mục</h5>
+</div>
+<div class="modal-body">
+  <form action="" #form="ngForm">
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="categoryName">Tên danh mục <span class="text-danger">*</span></label>
+          <input #categoryName="ngModel" type="text" [(ngModel)]="categoryData['CATEGORY_NAME']" name="categoryName" required
+          [ngClass]="{ 'is-invalid': (submitted && categoryName.invalid) || (categoryName.invalid && (categoryName.dirty || categoryName.touched))}"
+          class="form-control" id="categoryName" placeholder="Nhập tên danh mục"/>
+        <div *ngIf="(categoryName.invalid && submitted) || categoryName.invalid && (categoryName.dirty || categoryName.touched)" class="invalid-feedback">
+          <div *ngIf="categoryName.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="submit(form.invalid)">Save changes</button>
+  <button type="button" class="btn btn-secondary"(click)="closePopup()">Close</button>
+</div>

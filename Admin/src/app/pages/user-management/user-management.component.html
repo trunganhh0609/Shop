@@ -17,9 +17,9 @@
           <div class="row mb-3">
             <div class="col-md-10"></div>
             <div class="col-2">
-              <div class="text-end">
+              <!-- <div class="text-end">
                 <button class="btn btn-primary btn-rounded" (click)="addUser()">Thêm người dùng</button>
-              </div>
+              </div> -->
             </div>
           </div>
           <p-table responsiveLayout="scroll" [value]="lstUser" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
@@ -32,7 +32,7 @@
                 <th>Họ tên</th>
                 <th>Ngày sinh</th>
                 <th>Số điện thoại</th>
-                <th>Trạng thái</th>
+                <!-- <th>Trạng thái</th> -->
                 <th></th>
               </tr>
           </ng-template>
@@ -43,17 +43,18 @@
                 <td>{{ item.FULL_NAME }}</td>
                 <td>{{ item.BIRTH_DATE | date: 'dd/MM/yyyy'}}</td>
                 <td>{{ item.PHONE_NUMBER  }}</td>
-                <td *ngIf="item.STATUS == false">
+                <!-- <td *ngIf="item.STATUS == false">
                   <span class="badge badge-soft-secondary">Đã chặn</span>
                 </td>
                 <td *ngIf="item.STATUS == true">
                   <span class="badge badge-soft-success">Đang hoạt động</span>
-                </td>
+                </td> -->
                 <td>
                   <div class="d-flex">
-                    <i class="bx bx-edit-alt fs-4 mx-1 edit" (click)="edit(item)"></i>
-                    <i *ngIf="item.STATUS == true" class="bx bx-block fs-4 mx-1 del" (click)="delete(item)"></i>
-                    <i *ngIf="item.STATUS == false" class="bx bx-check-shield fs-4 mx-1 active" (click)="active(item)"></i>
+                    <i class="bx bx-show-alt fs-4 mx-1 edit" (click)="edit(item)"></i>
+                    <i class="bx bx-trash-alt fs-4 mx-1 del" (click)="delete(item)"></i>
+                    <!-- <i *ngIf="item.STATUS == true" class="bx bx-block fs-4 mx-1 del" (click)="delete(item)"></i> -->
+                    <!-- <i *ngIf="item.STATUS == false" class="bx bx-check-shield fs-4 mx-1 active" (click)="active(item)"></i> -->
                   </div>
                 </td>
               </tr>

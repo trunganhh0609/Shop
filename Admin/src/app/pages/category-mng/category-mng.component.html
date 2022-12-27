@@ -1,0 +1,46 @@
+<p-toast></p-toast>
+<div class="container-fluid">
+  <!-- <app-page-title title="Điểm danh" [breadcrumbItems]="breadCrumbItems"></app-page-title> -->
+      <div class="card">
+        <div class="card-body">
+          <h2>Quản lý danh mục</h2>
+          <div class="row my-4">
+            <div class="col-md-3">
+              <label for="keySearch">Tên danh mục</label>
+              <input type="text" class="form-control" [(ngModel)]="keySearch" (keyup)="getData()">
+            </div>
+            <div class="col-md-2">
+
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-md-12 text-end">
+              <button class="btn btn-primary btn-rounded" (click)="addCategory()">Thêm danh mục</button>
+            </div>
+          </div>
+          <p-table responsiveLayout="scroll" [value]="lstCategory" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="[10,25,50]"
+          [rowHover]="true">
+          <ng-template pTemplate="header">
+              <tr >
+                <th>STT</th>
+                <th>Tên danh mục</th>
+                <th style="width: 10%"></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-item let-i="rowIndex">
+              <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ item.CATEGORY_NAME }}</td>
+                <td>
+                  <div class="d-flex">
+                    <i class="bx bx-edit-alt fs-4 mx-1 edit" (click)="edit(item)"></i>
+                    <i class="bx bx-trash fs-4 mx-1 del" (click)="delete(item)"></i>
+                  </div>
+                </td>
+              </tr>
+          </ng-template>
+        </p-table>
+        </div>
+      </div>
+</div>

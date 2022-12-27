@@ -24,18 +24,13 @@ import { IconsModule } from './icons/icons.module';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AttendanceComponent } from './attendance/attendance.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
-import { ClassComponent } from './class/class.component';
 import { AuthInterceptor } from '../interceptor/interceptor';
-import { ClassDetailComponent } from './class/class-detail/class-detail.component';
 import { CommonService } from '../services/common/common.service';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 
-import { SettingAttendanceComponent } from './class/setting-attendance/setting-attendance.component';
-import { QrAttendanceComponent } from './class/qr-attendance/qr-attendance.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserMngFormComponent } from './user-management/user-mng-form/user-mng-form.component';
 import { MessageService } from 'primeng/api';
@@ -45,6 +40,8 @@ import { ProductMngFormComponent } from './product-mng/product-mng-form/product-
 import { PromotionMngComponent } from './promotion-mng/promotion-mng.component';
 import { PromotionFormComponent } from './promotion-mng/promotion-form/promotion-form.component';
 import { OrferMngComponent } from './orfer-mng/orfer-mng.component';
+import { CategoryMngComponent } from './category-mng/category-mng.component';
+import { CategoryFormComponent } from './category-mng/category-form/category-form.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -53,7 +50,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, AttendanceComponent, ClassComponent, ClassDetailComponent, SettingAttendanceComponent, QrAttendanceComponent, UserManagementComponent, UserMngFormComponent, ProductMngComponent, ProductMngFormComponent, PromotionMngComponent, PromotionFormComponent, OrferMngComponent],
+  declarations: [CalendarComponent, UserManagementComponent, UserMngFormComponent, ProductMngComponent, ProductMngFormComponent, PromotionMngComponent, PromotionFormComponent, OrferMngComponent, CategoryMngComponent, CategoryFormComponent],
   imports: [
     CommonModule,
     FormsModule,

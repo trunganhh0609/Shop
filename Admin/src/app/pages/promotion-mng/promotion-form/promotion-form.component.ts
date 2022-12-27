@@ -10,6 +10,7 @@ import { PromotionMngService } from 'src/app/services/promotion/promotion-mng.se
 export class PromotionFormComponent implements OnInit {
   promotionData:any = {};
   submitted:boolean = false;
+  lstType: any = [];
   startDate:Date;
   endDate:Date;
   constructor(
@@ -20,6 +21,7 @@ export class PromotionFormComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
+    this.getLstType();
 
     if(this.data){
       this.startDate = new Date(this.data.START_DATE);
@@ -28,6 +30,7 @@ export class PromotionFormComponent implements OnInit {
       this.promotionData.promotionKey = this.data.PROMOTION_KEY;
       this.promotionData.promotionId = this.data.PROMOTION_ID;
       this.promotionData.value = this.data.VALUE;
+      this.promotionData.promotionType = this.data.TYPE
     }
   }
 
@@ -40,6 +43,12 @@ export class PromotionFormComponent implements OnInit {
     this.promotionService.save(this.promotionData).subscribe(res=>{
       console.log(res);
       this.dialogRef.close(res)
+    })
+  }
+
+  getLstType(){
+    this.promotionService.getLstType().subscribe(res=>{
+      this.lstType = res.data
     })
   }
   close(){

@@ -1,0 +1,45 @@
+
+<p-toast></p-toast>
+<!-- Item Details -->
+<div class="item-details-area pt-100">
+    <div class="container">
+        <h2 style="color:rgb(211, 16, 81); margin-bottom:50px">Đặt hàng</h2>
+
+        <div class="row mx-5">
+
+                <div class="col-md-8 " style="padding-left:0; border-radius:5px;">
+                    <form #form="ngForm">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="" for="">Họ và tên: <span class="text-danger">*</span></label>
+                            <input class="form-control" name="receiverName" [(ngModel)]="userInfo.FULL_NAME" type="text">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="" for="">Số điện thoại: <span class="text-danger">*</span></label>
+                            <input class="form-control" name="receiverPhone" [(ngModel)]="userInfo.PHONE_NUMBER" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Địa chỉ: <span class="text-danger">*</span></label>
+                        <input class="form-control" name="address" [(ngModel)]="userInfo['address']" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Ghi chú:</label>
+                        <textarea class="form-control" name="note" id="" [(ngModel)]="userInfo['note']" cols="30" rows="10"></textarea>
+                    </div>
+                    </form>
+                </div>
+
+
+            <div class="col-md-4" style="padding-left:20px;">
+                <h4 >Tổng tiền sản phẩm: <span style="color:rgb(211, 16, 81);">{{ total | number }}VND</span></h4>
+                <!-- <h3 class="text-end" style="color:rgb(211, 16, 81);">gegewgeVND</h3> -->
+                <h4>Giảm giá: </h4>
+                <h4>Phí vận chuyển:</h4>
+                <button class="default-btn w-100" type="submit" (click)="saveOrder(form.value)">Hoàn tất đơn hàng</button>
+            </div>
+        </div>
+ </div>
+</div>
+
+

@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.qlrl.repository.CategoryRepository">
+
+    <select id="search" parameterType="map" resultType="map">
+        SELECT * FROM category WHERE category.CATEGORY_NAME LIKE CONCAT('%', #{keySearch}, '%')
+    </select>
+    
+    <insert id="addCategory" parameterType="map">
+        INSERT INTO category (CATEGORY_NAME)
+        VALUES
+        (#{CATEGORY_NAME});
+    </insert>
+
+    <update id="updateCategory" parameterType="map">
+        UPDATE category SET CATEGORY_NAME = #{CATEGORY_NAME} WHERE  CATEGORY_ID = #{CATEGORY_ID};
+    </update>
+
+    <delete id="deleteCategory" parameterType="map">
+        DELETE FROM category
+        WHERE CATEGORY_ID = #{CATEGORY_ID}
+    </delete>
+
+</mapper>

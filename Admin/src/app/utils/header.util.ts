@@ -16,7 +16,6 @@ export class HeaderUtil{
     return header;
   }
   public static getHeadersAuth(): HttpHeaders {
-    debugger
     const token = ThienAnConstant.AUTHORIZATION_TOKEN;
     if (!token) {
       return HeaderUtil.getHeaders();

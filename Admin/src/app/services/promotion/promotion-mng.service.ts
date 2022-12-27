@@ -33,4 +33,11 @@ export class PromotionMngService {
     const url = ApiUrlUtil.buildQueryString(environment.apiURL + '/deletePromotion');
     return this.http.post<any>(url, item, { headers: header });
   }
+
+  getLstType(): Observable<any> {
+    const header: HttpHeaders = HeadersUtil.getHeadersAuth();
+    // const params: RequestParam[] = ParamUtil.toRequestParams(param);
+    const url = ApiUrlUtil.buildQueryString(environment.apiURL + '/getLstType');
+    return this.http.get<any>(url, { headers: header });
+  }
 }

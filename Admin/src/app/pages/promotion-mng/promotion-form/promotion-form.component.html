@@ -6,8 +6,8 @@
 <div class="modal-body">
   <ngx-simplebar>
     <div class="row">
-      <div class="col-md-12 mb-3">
-        <label for="promotionName">Tên</label>
+      <div class="col-md-6 mb-3">
+        <label for="promotionName">Tên <span class="text-danger">*</span></label>
           <input #promotionName="ngModel" type="text" [(ngModel)]="promotionData['promotionName']" name="promotionName" required
           [ngClass]="{ 'is-invalid': (submitted && promotionName.invalid) || (promotionName.invalid && (promotionName.dirty || promotionName.touched))}"
           class="form-control" id="promotionName" placeholder="Nhập tên khuyến mại"/>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="col-md-6 mb-3">
-        <label for="promotionKey">Mã</label>
+        <label for="promotionKey">Mã <span class="text-danger">*</span></label>
           <input #promotionKey="ngModel" type="text" [(ngModel)]="promotionData['promotionKey']" name="promotionKey" required
           [ngClass]="{ 'is-invalid': (submitted && promotionKey.invalid) || (promotionKey.invalid && (promotionKey.dirty || promotionKey.touched))}"
           class="form-control" id="promotionKey" placeholder="Nhập mã khuyến mại"/>
@@ -27,9 +27,20 @@
           <div *ngIf="promotionKey.errors.required">Trường này không được để trống</div>
         </div>
       </div>
-
+      <div class="col-md-6 mb-3" >
+        <label for="value">Hình thức giảm giá <span class="text-danger">*</span></label>
+        <div class="d-flex">
+          <select class="form-select" [(ngModel)]="promotionData['promotionType']">
+            <option value="undefined">Chọn hình thức giảm giá</option>
+            <option *ngFor="let item of lstType" [value]="item.ID">{{ item.TYPE_NAME }}</option>
+        </select>
+        </div>
+        <div *ngIf="(value.invalid && submitted) || value.invalid && (value.dirty || value.touched)" class="invalid-feedback">
+          <div *ngIf="value.errors.required">Trường này không được để trống</div>
+        </div>
+      </div>
       <div class="col-md-6 mb-3">
-        <label for="value">Giảm(%)</label>
+        <label for="value">Giá trị <span class="text-danger">*</span></label>
         <div class="d-flex">
           <input #value="ngModel" type="number" [(ngModel)]="promotionData['value']" name="value" required
           [ngClass]="{ 'is-invalid': (submitted && value.invalid) || (value.invalid && (value.dirty || value.touched))}"
@@ -42,13 +53,13 @@
 
 
       <div class="col-md-6 mb-3">
-        <label for="startDate">Ngày bắt đầu</label>
+        <label for="startDate">Ngày bắt đầu <span class="text-danger">*</span></label>
           <input type="date"  [ngModel]="startDate | date:'yyyy-MM-dd'" (change)="startDate = $event.target.valueAsDate" name="startDate"
           class="form-control" id="startDate"/>
       </div>
 
       <div class="col-md-6 mb-3">
-        <label for="endDate">Ngày kết thúc</label>
+        <label for="endDate">Ngày kết thúc <span class="text-danger">*</span></label>
           <input type="date" [ngModel]="endDate | date:'yyyy-MM-dd'" (change)="endDate = $event.target.valueAsDate" name="endDate"
           class="form-control" id="endDate"/>
       </div>

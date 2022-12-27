@@ -10,18 +10,24 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 2,
+    label: 'Quản lý danh mục',
+    icon: 'bx bx-detail',
+    link: '/category-mng',
+  },
+  {
+    id: 3,
     label: 'Quản lý sản phẩm',
     icon: 'bx bx-detail',
     link: '/product-mng',
   },
   {
-    id: 3,
+    id: 4,
     label: 'Quản lý khuyến mại',
     icon: 'bx bx-detail',
     link: '/promotion-mng',
   },
   {
-    id: 4,
+    id: 5,
     label: 'Quản lý đơn hàng',
     icon: 'bx bx-detail',
     link: '/order-mng',

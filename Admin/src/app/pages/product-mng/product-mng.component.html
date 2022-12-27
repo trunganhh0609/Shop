@@ -7,18 +7,28 @@
           <div class="row my-4">
             <div class="col-md-2">
               <label>Tên sản phẩm</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control"[(ngModel)]="searchRequest['keySearch']" (keyup)="getData()">
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-2">
+              <label>Danh mục</label>
+              <select name="category" id="category"[(ngModel)]="searchRequest['categoryId']" class="form-select" (change)="getData()">
+                <option value="">Tất cả</option>
+                <option *ngFor="let category of lstCategory" [value]="category.CATEGORY_ID">{{ category.CATEGORY_NAME }}</option>
+              </select>
+            </div>
+            <div class="col-md-6"></div>
             <div class="col-md-2">
             </div>
 
           </div>
           <div class="row mb-3">
-            <div class="col-md-10"></div>
-            <div class="col-2">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
               <div class="text-end">
-                <button class="btn btn-primary btn-rounded" (click)="addProduct()">Thêm sản phẩm</button>
+                <div class="d-flex">
+                  <button class="btn btn-success btn-rounded mx-2 " (click)="addProduct()">Thêm bằng Excel</button>
+                  <button class="btn btn-primary btn-rounded text-end" (click)="addProduct()">Thêm sản phẩm</button>
+                </div>
               </div>
             </div>
           </div>

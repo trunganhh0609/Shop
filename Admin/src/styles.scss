@@ -29,6 +29,18 @@
   opacity: 1;
 }
 
+.edit:hover{
+  color: rgb(86, 86, 248)
+}
+.edit{
+  cursor: pointer;
+}
+.del:hover{
+  color: rgb(247, 71, 71)
+}
+.del{
+  cursor: pointer;
+}
 
 
 html, body { height: 100%; }

@@ -14,6 +14,8 @@ import { ProductMngFormComponent } from './product-mng-form/product-mng-form.com
 })
 export class ProductMngComponent implements OnInit {
   lstProduct: any = [];
+  lstCategory = [];
+  searchRequest: any = {}
   constructor(
     private dialog: MatDialog,
     private messageService: MessageService,
@@ -22,15 +24,24 @@ export class ProductMngComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getData()
+    this.searchRequest['keySearch'] = '';
+    this.searchRequest['categoryId'] = '';
+    this.getData();
+    this.getListCategory();
   }
 
   getData(){
-    this.productService.getProductMng().subscribe(result => {
+    this.productService.getProductMng(this.searchRequest).subscribe(result => {
       this.lstProduct = result.data
       this.lstProduct.forEach(product =>{
         product.IMAGE = environment.mainURL + "/view/img-view/" + product.IMAGE;
       })
+    })
+  }
+
+  getListCategory(){
+    this.productService.getDataProductMngForm().subscribe(res => {
+      this.lstCategory = res.lstCategory
     })
   }
 

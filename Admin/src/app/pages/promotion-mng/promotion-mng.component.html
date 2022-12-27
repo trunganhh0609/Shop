@@ -27,6 +27,7 @@
                 <th>Tên khuyến mại</th>
                 <th>Mã khuyến mại</th>
                 <th>Giá trị </th>
+                <th>Hình thức KM</th>
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>
                 <th></th>
@@ -38,6 +39,7 @@
                 <td>{{ item.PROMOTION_NAME }}</td>
                 <td>{{ item.PROMOTION_KEY }}</td>
                 <td>{{ item.VALUE }}</td>
+                <td>{{ item.TYPE_NAME }}</td>
                 <td>{{ item.START_DATE | date: 'dd/MM/yyyy'}}</td>
                 <td>{{ item.END_DATE | date: 'dd/MM/yyyy'}}</td>
                 <td>
